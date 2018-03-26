@@ -205,8 +205,8 @@ if __name__ == '__main__':
     '''
 
     ex_data = np.concatenate((min_generated,max_generated),axis=0)
-    boolbool = np.zeros((400,1))
-    boolbool[200:400,0]+=1
+    fullbool = np.zeros((400,1))
+    fullbool[200:400,0]+=1
     tf.reset_default_graph()
     print("INITIATING EXAGGERATED REGRESSOR...")
     model = LogisticRegressor(learning_rate=1e-4,input_dim=ex_data.shape[1])
@@ -214,8 +214,8 @@ if __name__ == '__main__':
     for epoch in range(650):
         for iter in range(1000 // 20):
             choices = np.random.choice(400,20)
-            loss = model.run_single_step(ex_data[choices,:],boolbool[choices,:])
-            #loss = model.run_single_step(X[Y[:,1]==1,:],Y[Y[:,1]==1,:])
+            loss = model.run_single_step(ex_data[choices,:],fullbool[choices,:])
+            
             
         if epoch % 5 == 0:
             print('[Epoch {}] Loss: {}'.format(epoch, loss))
