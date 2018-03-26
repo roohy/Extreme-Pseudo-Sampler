@@ -265,7 +265,7 @@ dummy[:200]+=1
 list_of_ws = []
 for item in list_of_ex_real:
     
-    new_item = (item-np.mean(item,axis=0))/np.var(item,axis=0)
+    new_item = (item-np.mean(item,axis=0))/np.std(item,axis=0)
     print(new_item.shape)
     model = do_regression(new_item,dummy,550)
     w = model.sess.run(model.W)
